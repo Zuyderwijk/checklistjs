@@ -1,0 +1,123 @@
+.checklistOverview {
+
+    input[type=checkbox]:not(old),
+    input[type=radio   ]:not(old) {
+        width     : 2em;
+        margin    : 0;
+        padding   : 0;
+        font-size : 1em;
+        opacity   : 0;
+    }
+
+    input[type=checkbox]:not(old) + label,
+    input[type=radio   ]:not(old) + label {
+        display      : inline-block;
+        line-height  : 1.5em;
+        transition: all 250ms ease;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    input[type=checkbox]:not(old) + label > span,
+    input[type=radio   ]:not(old) + label > span {
+        display          : inline-block;
+        width            : 21px;
+        height           : 21px;
+        margin           : 0.25em 0.5em 0.25em 0.25em;
+        border           : 0.0625em solid rgb(192,192,192);
+        border-radius    : 0.25em;
+        background       : $white;
+        vertical-align   : bottom;
+    }
+
+    input[type=checkbox]:not(old):checked + label > span,
+    input[type=radio   ]:not(old):checked + label > span {
+        background: $white;
+    }
+
+    input[type=checkbox]:not(old):checked + label > span:before{
+        content: 'x';
+        display: block;
+        width: 20px;
+        color: $body-font-color;
+        font-size: 18px;
+        line-height: 18px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    input[type=radio]:not(old):checked + label > span > span{
+        display          : block;
+        width            : 0.5em;
+        height           : 0.5em;
+        margin           : 0.125em;
+        border           : 0.0625em solid rgb(115,153,77);
+        border-radius    : 0.125em;
+        background       : $white;
+        background-image : linear-gradient(rgb(179,217,140),rgb(153,204,102));
+    }
+
+    .checklist {
+        margin-left: 0;
+        .item {
+            list-style-type: none;
+            display: block;
+            clear: both;
+            overflow: hidden;
+            line-height: 1;
+            input[type='checkbox']:not(old):checked + label {
+                color: $section-border-color;
+                text-decoration: line-through;
+            }
+            input[type='checkbox']:not(old) + label {
+                font-size: rem-calc(16);
+                color: $body-font-color;
+            }
+            label {
+                cursor: pointer;
+                line-height: 1.6;
+                margin-left: 0;
+                margin-right: 0;
+                &:hover {
+                    color: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .ui-progressbar-value {
+        background: lightgreen;
+        height: 100%;
+        border-radius: $global-radius;
+        transition: 250ms all ease-in-out;
+    }
+    .progressbar-container {
+        position: relative;
+        width: 100%;
+        padding: 15px;
+        border-radius: $global-radius;
+        background-color: $white;
+    }
+    .progressbar-bar {
+        height: 30px;
+        border-radius: $global-radius;
+        transition: 250ms all ease;
+    }
+    .progressbar-label {
+        position: absolute;
+        top: 18px;
+        left: 49%;
+        z-index: 2;
+        text-shadow: 2px 8px 6px rgba(255,255,255,0.2),0px -5px 35px rgba(255,255,255,0.3);
+    }
+
+    meter {
+        &::-webkit-meter-optimum-value,
+        &::-webkit-meter-suboptimum-value,
+        &::-webkit-meter-even-less-good-value {
+            transition: 0.6s width;
+        }
+    }
+}
