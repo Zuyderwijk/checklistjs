@@ -2,21 +2,13 @@
     "name": "ChecklistJS",
     "version": "1.0.0",
     "description": "Checklist plugin with progress indicator",
-    "main": "Gruntfile.js",
-    "scripts": {
-        "compile": "grunt build"
-    },
+    "author": "Jasper Zuyderwijk",
     "devDependencies": {
         "grunt": "^0.4.5",
+        "grunt-contrib-uglify": "latest",
         "grunt-autoprefixer": "^1.0.1",
         "grunt-contrib-cssmin": "latest",
         "grunt-contrib-sass": "^0.8.1",
-        "grunt-contrib-uglify": "latest",
-        "grunt-contrib-watch": "^0.6.1",
-        "grunt-sass": "^0.16.0"
-    },
-    "author": "Jasper Zuyderwijk",
-    "license": "ISC"
+        "grunt-contrib-watch": "^0.6.1"
+    }
 }
-
-

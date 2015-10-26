@@ -1,40 +1,51 @@
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-    
-        autoprefixer: {
-          options: {
-              browsers: ['last 15 versions']
-          },
-          dist: { // Target
-              files: {
-                   'css/style.css': 'css/style.css'
-              }
-          },
-        },
-        
+
         sass: {
             options: {
-                includePaths: [
-/*                    'components/foundation/scss'*/
-                ]
+
             },
             dist: {
                 options: {
                     outputStyle: 'expanded'
                 },
-                files: [
-                      {'css/checklist.css': ['scss/checklist.scss'] }
-                ]
+                files: [{
+                    'css/style.css': ['scss/checklist.scss']
+                }]
             }
         },
+
+        watch: {
+            grunt: { files: ['Gruntfile.js'] },
+            sass: {
+                files: 'scss/**/*.scss',
+                tasks: ['sass:dist', 'autoprefixer']
+            },
+            options: {
+
+            }
+        },
+
+        autoprefixer: {
+            options: {
+                browsers: ['last 3 versions']
+            },
+            dist: { // Target
+                files: {
+                    'css/style.css': 'css/style.css'
+                }
+            },
+        },
+
         cssmin: {
             combine: {
-                files: [
-                      { 'css/checklist.min.css': ['css/checklist.css'] }
-                ]
+                files: [{
+                    'css/style.min.css': ['css/style.css']
+                }]
             }
         },
+
         uglify: {
             my_target: {
                 options: {
@@ -48,29 +59,17 @@ module.exports = function(grunt) {
                     }
                 ]
             }
-        },
-        watch: {
-            grunt: {
-                files: ['Gruntfile.js']
-            },
-            sass: {
-                files: 'scss/**/*.scss',
-                tasks: ['build']
-            }
         }
     });
-    
+
     grunt.loadNpmTasks('grunt-sass');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-autoprefixer');
 
-    grunt.registerTask('build', ['sass:dist', 'autoprefixer', 'cssmin', 'uglify']);
-    grunt.registerTask('js', ['uglify']);
-
-    grunt.registerTask('composer', ['build']);
-
-    grunt.registerTask('default', ['sass:dist', 'autoprefixer', 'cssmin', 'watch']);
-
+    grunt.registerTask('js', ['uglify'] );
+    grunt.registerTask('css', ['sass:dist', 'autoprefixer', 'cssmin']);
+    grunt.registerTask('build', ['sass:dist', 'autoprefixer', 'cssmin', 'js' ]);
+    grunt.registerTask('watch', ['sass:dist', 'watch']);
+    grunt.registerTask('default', ['sass:dist']);
 }

@@ -34,6 +34,16 @@ $(function() {
 	    $(":checkbox").click(function(){
 		    countChecked();
 	    });
+
+        $(":checkbox").click(function(){
+
+            countChecked();
+
+            var value=$(this).attr('value');
+            var id= $(this).attr('id');
+            console.log(id);
+            console.log(value);
+        });
 	}
     
 });
