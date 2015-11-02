@@ -1,11 +1,13 @@
-$(function() {
-	if(document.getElementById('checklistjs')) {
+(function () {
+	$.fn.checklistjs = function () {
+		$(this).addClass('checklistjs').show();
 
 		var $list = $(this).find("ul");
 		var $items = $list.find("li");
 		var theme = "basic";
 
-		$list.addClass('checklist').attr('id', 'checklist');
+		$list.addClass('list-theme'+' '+theme).attr('id', 'checklist');
+		$(this).parent("#checklistjs").addClass('checklistjs');
 
 		var itemid = 0;
 		$items.each(function() {
@@ -18,46 +20,34 @@ $(function() {
 		});
 
 		var count = 0;
-	    var checked = 0;
+		var checked = 0;
+		function countBoxes() {
+			count = $("#checklist input[type='checkbox']").length;
+		}
+		countBoxes();
+		$(":checkbox").click(countBoxes);
 
-	    function countBoxes() {
-	        count = $("#checklist input[type='checkbox']").length;
-	    }
-	
-	    countBoxes();
-	    $(":checkbox").click(countBoxes);
-	
-	    // Count checks
-	    function countChecked() {
-	        checked = $("input:checked").length;
-	        var percentage = parseInt(((checked / count) * 100),10);
-	        if (count < 1) {
-		        percentage = 0;
-	        }
+		// Count checks
+		function countChecked() {
+			checked = $("input:checked").length;
+			var percentage = parseInt(((checked / count) * 100),10);
+			if (count < 1) {
+				percentage = 0;
+			}
 
-            $('meter').val(percentage);
+			$('meter').val(percentage);
+			$(".progressbar-label").text(percentage + "%");
 
-/*	        $(".progressbar-bar").progressbar({
-	            value: percentage
-	        });*/
-	
-	        $(".progressbar-label").text(percentage + "%");
-	
-	    }
-	
-	    countChecked();
+		}
+		countChecked();
 
-	    $(":checkbox").click(function(){
-		    countChecked();
-	    });
+		$(":checkbox").click(function(){
+			countChecked();
 
-        $(":checkbox").click(function(){
-            countChecked();
-
-            var value=$(this).attr('value');
-            var id= $(this).attr('id');
-            console.log(id);
-            console.log(value);
-        });
+			var value=$(this).attr('value');
+			var id= $(this).attr('id');
+			console.log(id);
+			console.log(value);
+		});
 	}
-});
+})(jQuery);

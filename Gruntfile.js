@@ -55,7 +55,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         'js/checklistjs.min.js': [
-                            'js/jquery.checklistjs.js'
+                            'js/checklistjs.js'
                         ]
                     }
                 ]
