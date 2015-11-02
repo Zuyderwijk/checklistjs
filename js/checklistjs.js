@@ -1,11 +1,12 @@
 (function () {
 	$.fn.checklistjs = function () {
-		$(this).addClass('checklistjs').show();
-
+		// jQuery opbjects
 		var $list = $(this).find("ul");
 		var $items = $list.find("li");
 		var theme = "basic";
 
+		// Init theme classes
+		$(this).addClass('checklistjs').show();
 		$list.addClass('list-theme'+' '+theme).attr('id', 'checklist');
 		$(this).parent("#checklistjs").addClass('checklistjs');
 
@@ -34,7 +35,7 @@
 			if (count < 1) {
 				percentage = 0;
 			}
-
+			// Update progressbar
 			$('meter').val(percentage);
 			$(".progressbar-label").text(percentage + "%");
 
@@ -43,9 +44,9 @@
 
 		$(":checkbox").click(function(){
 			countChecked();
+			var value = $(this).attr('value');
+			var id = $(this).attr('id');
 
-			var value=$(this).attr('value');
-			var id= $(this).attr('id');
 			console.log(id);
 			console.log(value);
 		});
