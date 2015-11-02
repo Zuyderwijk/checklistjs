@@ -18,55 +18,38 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<div class="checklistOverview" id="checklistjs">
+<div id="checklistjs">
 
     <h1>Checklist JS</h1>
-    <p></p>
+    <p>This is a demo of a list of checklist items with some basic styling.</p>
 
     <div class="progress">
         <div class="progressbar-container">
-            <meter class="progressbar-bar" min="0" max="100" low="25" high="75" optimum="100" value="6"></meter>
+            <meter class="progressbar-bar" min="0" max="100" low="25" high="75" optimum="100" value="0"></meter>
             <div class="progressbar-label">6%</div>
         </div>
-        <div class="ready"></div>
     </div>
 
-    <form id="list">
-        <ul class="checklist">
-            <li class="item">
-                <input id="item1" type="checkbox" name="field" value="1">
-                <label for="item1"><span><span></span></span>Combine images using sprites</label>
-            </li>
-            <li class="item">
-                <input id="item2" type="checkbox" name="field" value="1">
-                <label for="item2"><span><span></span></span>All images and sprites optimized and compressed (see: kraken.io)</label>
-            </li>
-            <li class="item">
-                <input id="item3" type="checkbox" name="field" value="1">
-                <label for="item3"><span><span></span></span>Serve scaled images</label>
-            </li>
-            <li class="item">
-                <input id="item4" type="checkbox" name="field" value="1">
-                <label for="item4"><span><span></span></span>Use data URL's for small images on HTTPS connections (see: http://dataurl.net/#about)</label>
-            </li>
-            <li class="item">
-                <input id="item5" type="checkbox" name="field" value="1">
-                <label for="item5"><span><span></span></span>Usage of vector images in general</label>
-            </li>
-            <li class="item">
-                <input id="item6" type="checkbox" name="field" value="1">
-                <label for="item6"><span><span></span></span>Optimize SVG with an SVG cleaning tool (see: https://github.com/svg/svgo )</label>
-            </li>
+    <form>
+        <ul>
+            <li>The quick brown fox jumps over the lazy dog.</li>
+            <li>Pack my box with five dozen liquor jugs.</li>
+            <li>Jackdaws love my big sphinx of quartz.</li>
+            <li>A quick movement of the enemy will jeopardize six gunboats.</li>
+            <li>Wafting zephyrs quickly vexed Jumbo.</li>
+            <li>Crazy Fredericka bought many very equisite opal jewels.</li>
         </ul>
     </form>
 </div>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
-<script src="js/jquery.checklistjs.js"></script>
+<script src="js/checklistjs.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#checklistjs').checklistjs();
+        $('#checklistjs').checklistjs({
+            theme: "something"
+        });
     });
 </script>
 

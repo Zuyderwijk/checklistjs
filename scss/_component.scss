@@ -1,4 +1,4 @@
-.checklistOverview {
+.checklistjs {
     input[type=checkbox]:not(old),
     input[type=radio   ]:not(old) {
         width     : 2em;
@@ -14,6 +14,7 @@
         line-height  : 1.5em;
         transition: all 250ms ease;
         width: 100%;
+        color: $primary-color;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -34,13 +35,21 @@
     input[type=checkbox]:not(old):checked + label > span,
     input[type=radio   ]:not(old):checked + label > span {
         background: $white;
+        &:before {
+            transition: 250ms all ease;
+            margin-top: 0;
+            opacity: 0;
+        }
     }
 
     input[type=checkbox]:not(old):checked + label > span:before{
-        content: 'x';
+        content: '✓';
         display: block;
         width: 20px;
-        color: $body-font-color;
+        height: 20px;
+        margin-top: 2px;
+        opacity: 1;
+        color: $check-color;
         font-size: 18px;
         line-height: 18px;
         text-align: center;
@@ -58,29 +67,32 @@
         background-image : linear-gradient(rgb(179,217,140),rgb(153,204,102));
     }
 
-    .checklist {
-        margin-left: 0;
-        .item {
-            list-style-type: none;
-            display: block;
-            clear: both;
-            overflow: hidden;
-            line-height: 1;
-            input[type='checkbox']:not(old):checked + label {
-                color: $section-border-color;
-                text-decoration: line-through;
-            }
-            input[type='checkbox']:not(old) + label {
-                font-size: rem-calc(16);
-                color: $body-font-color;
-            }
-            label {
-                cursor: pointer;
-                line-height: 1.6;
-                margin-left: 0;
-                margin-right: 0;
-                &:hover {
-                    color: $secondary-color;
+    .list-theme {
+        &.basic {
+            margin-left: 0;
+            padding-left: 0;
+            .item {
+                list-style-type: none;
+                display: block;
+                clear: both;
+                overflow: hidden;
+                line-height: 1;
+                input[type='checkbox']:not(old):checked + label {
+                    color: $section-border-color;
+                    text-decoration: line-through;
+                }
+                input[type='checkbox']:not(old) + label {
+                    font-size: rem-calc(16);
+                    color: $body-font-color;
+                }
+                label {
+                    cursor: pointer;
+                    line-height: 1.6;
+                    margin-left: 0;
+                    margin-right: 0;
+                    &:hover {
+                        color: $secondary-color;
+                    }
                 }
             }
         }
@@ -95,9 +107,6 @@
     .progressbar-container {
         position: relative;
         width: 100%;
-        padding: 15px;
-        border-radius: $global-radius;
-        background-color: $white;
     }
     .progressbar-bar {
         height: 30px;
@@ -106,13 +115,14 @@
     }
     .progressbar-label {
         position: absolute;
-        top: 18px;
+        top: 7px;
         left: 49%;
         z-index: 2;
         text-shadow: 2px 8px 6px rgba(255,255,255,0.2),0px -5px 35px rgba(255,255,255,0.3);
     }
 
     meter {
+        width: 100%;
         &::-webkit-meter-optimum-value,
         &::-webkit-meter-suboptimum-value,
         &::-webkit-meter-even-less-good-value {

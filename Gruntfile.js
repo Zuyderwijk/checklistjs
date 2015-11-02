@@ -31,7 +31,8 @@ module.exports = function(grunt) {
             options: {
                 browsers: ['last 3 versions']
             },
-            dist: { // Target
+            dist: {
+            // Target
                 files: {
                     'css/style.css': 'css/style.css'
                 }
@@ -54,7 +55,7 @@ module.exports = function(grunt) {
                 files: [
                     {
                         'js/checklistjs.min.js': [
-                            'js/checklistjs.js'
+                            'js/jquery.checklistjs.js'
                         ]
                     }
                 ]
@@ -65,11 +66,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-sass');
     grunt.loadNpmTasks('grunt-autoprefixer');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
+    grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('js', ['uglify'] );
     grunt.registerTask('css', ['sass:dist', 'autoprefixer', 'cssmin']);
     grunt.registerTask('build', ['sass:dist', 'autoprefixer', 'cssmin', 'js' ]);
-    grunt.registerTask('watch', ['sass:dist', 'watch']);
-    grunt.registerTask('default', ['sass:dist']);
+    grunt.registerTask('default', ['sass:dist', 'autoprefixer', 'watch']);
 }

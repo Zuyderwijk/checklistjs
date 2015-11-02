@@ -1,0 +1,60 @@
+body {
+	background-color: $primary-color;
+	h1 {
+		color: $primary-color;
+		margin-top: 0;
+	}
+}
+
+.checklistjs {
+	position: relative;
+	width: 800px;
+	margin: 20vh auto 0;
+	border: 1px solid lighten($primary-color, 10%);
+	border-radius: 5px;
+	background-color: $white;
+	padding: 30px;
+	box-shadow: 4px 4px 20px darken($primary-color, 10%);
+
+	@extend .animated;
+	@extend .fadeInDown;
+}
+
+
+// animation
+
+.animated {
+	-webkit-animation-duration: 1s;
+	animation-duration: 1s;
+	-webkit-animation-fill-mode: both;
+	animation-fill-mode: both;
+	-webkit-animation-timing-function: ease-in-out;
+	animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+
+@keyframes fadeInDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.fadeInDown {
+	-webkit-animation-name: fadeInDown;
+	animation-name: fadeInDown;
+}

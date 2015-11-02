@@ -1,5 +1,64 @@
-.checklistOverview input[type=checkbox]:not(old),
-.checklistOverview input[type=radio]:not(old) {
+@charset "UTF-8";
+body {
+  background-color: #526880;
+}
+
+body h1 {
+  color: #526880;
+  margin-top: 0;
+}
+
+.checklistjs {
+  position: relative;
+  width: 800px;
+  margin: 20vh auto 0;
+  border: 1px solid #67819e;
+  border-radius: 5px;
+  background-color: #ffffff;
+  padding: 30px;
+  box-shadow: 4px 4px 20px #3e4f61;
+}
+
+.animated, .checklistjs {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: ease-in-out;
+  animation-timing-function: ease-in-out;
+}
+
+@-webkit-keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+.fadeInDown, .checklistjs {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+.checklistjs input[type=checkbox]:not(old),
+.checklistjs input[type=radio]:not(old) {
   width: 2em;
   margin: 0;
   padding: 0;
@@ -7,19 +66,20 @@
   opacity: 0;
 }
 
-.checklistOverview input[type=checkbox]:not(old) + label,
-.checklistOverview input[type=radio]:not(old) + label {
+.checklistjs input[type=checkbox]:not(old) + label,
+.checklistjs input[type=radio]:not(old) + label {
   display: inline-block;
   line-height: 1.5em;
   transition: all 250ms ease;
   width: 100%;
+  color: #526880;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.checklistOverview input[type=checkbox]:not(old) + label > span,
-.checklistOverview input[type=radio]:not(old) + label > span {
+.checklistjs input[type=checkbox]:not(old) + label > span,
+.checklistjs input[type=radio]:not(old) + label > span {
   display: inline-block;
   width: 21px;
   height: 21px;
@@ -30,23 +90,33 @@
   vertical-align: bottom;
 }
 
-.checklistOverview input[type=checkbox]:not(old):checked + label > span,
-.checklistOverview input[type=radio]:not(old):checked + label > span {
+.checklistjs input[type=checkbox]:not(old):checked + label > span,
+.checklistjs input[type=radio]:not(old):checked + label > span {
   background: #ffffff;
 }
 
-.checklistOverview input[type=checkbox]:not(old):checked + label > span:before {
-  content: 'x';
+.checklistjs input[type=checkbox]:not(old):checked + label > span:before,
+.checklistjs input[type=radio]:not(old):checked + label > span:before {
+  transition: 250ms all ease;
+  margin-top: 0;
+  opacity: 0;
+}
+
+.checklistjs input[type=checkbox]:not(old):checked + label > span:before {
+  content: '✓';
   display: block;
   width: 20px;
-  color: #777777;
+  height: 20px;
+  margin-top: 2px;
+  opacity: 1;
+  color: #526880;
   font-size: 18px;
   line-height: 18px;
   text-align: center;
   font-weight: bold;
 }
 
-.checklistOverview input[type=radio]:not(old):checked + label > span > span {
+.checklistjs input[type=radio]:not(old):checked + label > span > span {
   display: block;
   width: 0.5em;
   height: 0.5em;
@@ -57,11 +127,12 @@
   background-image: linear-gradient(#b3d98c, #99cc66);
 }
 
-.checklistOverview .checklist {
+.checklistjs .list-theme.basic {
   margin-left: 0;
+  padding-left: 0;
 }
 
-.checklistOverview .checklist .item {
+.checklistjs .list-theme.basic .item {
   list-style-type: none;
   display: block;
   clear: both;
@@ -69,56 +140,57 @@
   line-height: 1;
 }
 
-.checklistOverview .checklist .item input[type='checkbox']:not(old):checked + label {
+.checklistjs .list-theme.basic .item input[type='checkbox']:not(old):checked + label {
   color: #dbe4ec;
   text-decoration: line-through;
 }
 
-.checklistOverview .checklist .item input[type='checkbox']:not(old) + label {
+.checklistjs .list-theme.basic .item input[type='checkbox']:not(old) + label {
   font-size: rem-calc(16);
   color: #777777;
 }
 
-.checklistOverview .checklist .item label {
+.checklistjs .list-theme.basic .item label {
   cursor: pointer;
   line-height: 1.6;
   margin-left: 0;
   margin-right: 0;
 }
 
-.checklistOverview .checklist .item label:hover {
+.checklistjs .list-theme.basic .item label:hover {
   color: #6eb4ef;
 }
 
-.checklistOverview .ui-progressbar-value {
+.checklistjs .ui-progressbar-value {
   background: lightgreen;
   height: 100%;
   border-radius: 5px;
   transition: 250ms all ease-in-out;
 }
 
-.checklistOverview .progressbar-container {
+.checklistjs .progressbar-container {
   position: relative;
   width: 100%;
-  padding: 15px;
-  border-radius: 5px;
-  background-color: #ffffff;
 }
 
-.checklistOverview .progressbar-bar {
+.checklistjs .progressbar-bar {
   height: 30px;
   border-radius: 5px;
   transition: 250ms all ease;
 }
 
-.checklistOverview .progressbar-label {
+.checklistjs .progressbar-label {
   position: absolute;
-  top: 18px;
+  top: 7px;
   left: 49%;
   z-index: 2;
   text-shadow: 2px 8px 6px rgba(255, 255, 255, 0.2), 0px -5px 35px rgba(255, 255, 255, 0.3);
 }
 
-.checklistOverview meter::-webkit-meter-optimum-value, .checklistOverview meter::-webkit-meter-suboptimum-value, .checklistOverview meter::-webkit-meter-even-less-good-value {
+.checklistjs meter {
+  width: 100%;
+}
+
+.checklistjs meter::-webkit-meter-optimum-value, .checklistjs meter::-webkit-meter-suboptimum-value, .checklistjs meter::-webkit-meter-even-less-good-value {
   transition: 0.6s width;
 }
