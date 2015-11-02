@@ -21,11 +21,9 @@
 
         var count = 0;
         var checked = 0;
-
         function countBoxes() {
             count = $("#checklist input[type='checkbox']").length;
         }
-
         countBoxes();
         $(":checkbox").click(countBoxes);
 
@@ -41,12 +39,7 @@
             $(".progressbar-label").text(percentage + "%");
 
         }
-
         countChecked();
-
-        $(":checkbox").click(function(){
-            countChecked();
-        });
 
         $(":checkbox").click(function(){
             countChecked();
